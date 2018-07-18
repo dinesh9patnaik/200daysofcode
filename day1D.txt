@@ -1,7 +1,8 @@
+Q-1
 n = int(input())
 for length in range(n):
     print(' '*(n-length-1)+'#'*(length+1))
-
+Q-2
 a = [int(x) for x in raw_input().split()]
 b = [int(x) for x in raw_input().split()]
 
