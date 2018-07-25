@@ -1,0 +1,106 @@
+Day of the Programmer
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the solve function below.
+    static String solve(int year) {
+        String date="";
+        if(year<=1917)
+        {
+            if(year%4==0)
+                date="12"+".09."+year;
+            else
+                date="13"+".09."+year;
+        }
+        else if(year>=1919)
+        {
+            if((year%400==0)||(year%4==0&&year%100!=0))
+            date="12"+".09."+year;
+            else
+            date="13"+".09."+year;
+        }
+        else if(year==1918)
+            date="26"+".09."+year;
+        return date;
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int year = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        String result = solve(year);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
+
+
+Bon Appetit
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+
+    // Complete the bonAppetit function below.
+    static void bonAppetit(List<Integer> bill, int k, int b) {
+        int sum=0;
+        for(int i=0;i<bill.size();i++)
+        {
+            if(i!=k)
+            sum+=bill.get(i);
+        }
+        sum=sum/2;
+        if(sum==b)
+            System.out.println("Bon Appetit");
+        else
+            System.out.println(b-sum);
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] nk = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        int n = Integer.parseInt(nk[0]);
+
+        int k = Integer.parseInt(nk[1]);
+
+        List<Integer> bill = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        int b = Integer.parseInt(bufferedReader.readLine().trim());
+
+        bonAppetit(bill, k, b);
+
+        bufferedReader.close();
+    }
+}
