@@ -1,0 +1,45 @@
+https://www.hackerrank.com/challenges/taum-and-bday/problem
+#include <iostream>
+using namespace std;
+#define ln unsigned long long
+int main()
+{
+    ln t, b, w, bc, wc, z;
+    cin>>t;
+    while(t>0){
+        cin>>b>>w>>bc>>wc>>z;
+        cout<<b*(wc+z<bc?wc+z:bc)+w*(bc+z<wc?bc+z:wc)<<endl;
+        t--;
+    }
+    return 0;
+}
+
+https://www.hackerrank.com/challenges/repeated-string/problem
+#include <bits/stdc++.h>
+#include<cstring>
+
+using namespace std;
+
+int main(){
+    string s;
+    cin >> s;
+    long n;
+    cin >> n;
+    long count=0;
+    int i,k=s.size();
+    long p=n/k;
+    
+      for(i=0;i<s.size();i++){
+        if(s[i]=='a')
+            count++;
+      }
+    
+    count = count * p;
+    
+    for(i=0;i<(n%s.size());i++){
+        if(s[i]=='a')
+            count++;
+    } 
+    cout << count << endl;
+        return 0;
+}
